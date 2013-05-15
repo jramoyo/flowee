@@ -4,15 +4,39 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<artifactId>flowee</artifactId>
 		<groupId>com.jramoyo</groupId>
+		<artifactId>flowee</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.jramoyo.flowee</groupId>
 	<artifactId>flowee-spring</artifactId>
+	<packaging>jar</packaging>
 	<name>Flowee Spring</name>
+	<description>Spring module for Flowee</description>
 	<url>https://code.google.com/p/flowee</url>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>http://jramoyo@code.google.com/p/flowee/ </url>
+		<connection>scm:git:git@http://jramoyo@code.google.com/p/flowee/ </connection>
+		<developerConnection>scm:git:https://jramoyo@code.google.com/p/flowee/ </developerConnection>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>jramoyo</id>
+			<name>Jan Amoyo</name>
+			<email>contact@jramoyo.com</email>
+		</developer>
+	</developers>
+
 
 	<properties>
 		<org.springframework-version>3.2.2.RELEASE</org.springframework-version>
