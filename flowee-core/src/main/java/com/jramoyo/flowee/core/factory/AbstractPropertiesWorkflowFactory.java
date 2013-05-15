@@ -31,6 +31,8 @@ import com.jramoyo.flowee.core.task.Task;
  * <li>workflow.properties</li>
  * <li>task.properties</li>
  * </ul>
+ * </p>
+ * <p>
  * The path to these properties files can be overridden using their respective
  * field setters.
  * </p>
@@ -132,10 +134,8 @@ public abstract class AbstractPropertiesWorkflowFactory<W extends Workflow<T, R,
 		return taskNames;
 	}
 
-	private void loadFromProperties(Map<String, String> map,
-			String propertiesFile) throws IOException {
-		InputStream inputStream = getClass()
-				.getResourceAsStream(propertiesFile);
+	private void loadFromProperties(Map<String, String> map, String propertiesFile) throws IOException {
+		InputStream inputStream = getClass().getResourceAsStream(propertiesFile);
 		if (inputStream != null) {
 			Properties properties = new Properties();
 			properties.load(inputStream);

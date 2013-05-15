@@ -27,10 +27,8 @@ public class AbstractJexlFilterTest {
 
 	@Test
 	public void testEvaluate() {
-		Assert.assertTrue("Incorrect evaluation", filter.evaluate("value",
-				new StringContext(), "text == 'value'"));
-		Assert.assertTrue("Incorrect evaluation", filter.evaluate("value",
-				new StringContext(), "text != 'incorrect'"));
+		Assert.assertTrue("Incorrect evaluation", filter.evaluate("value", new StringContext(), "text == 'value'"));
+		Assert.assertTrue("Incorrect evaluation", filter.evaluate("value", new StringContext(), "text != 'incorrect'"));
 
 		try {
 			filter.evaluate("value", new StringContext(), "text = 'incorrect'");
@@ -39,11 +37,9 @@ public class AbstractJexlFilterTest {
 		}
 	}
 
-	private static class TestJexlFilter extends
-			AbstractJexlFilter<String, StringContext> {
+	private static class TestJexlFilter extends AbstractJexlFilter<String, StringContext> {
 		@Override
-		protected ReadonlyContext populateJexlContext(String model,
-				StringContext context) {
+		protected ReadonlyContext populateJexlContext(String model, StringContext context) {
 			JexlContext jexlContext = new MapContext();
 			jexlContext.set("text", model);
 

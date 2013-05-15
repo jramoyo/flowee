@@ -18,16 +18,15 @@ import com.jramoyo.flowee.core.task.Task;
  * configured tasks.
  * </p>
  * 
- * @param T
- *            a workflow task
- * @param R
- *            a workflow request
- * @param C
- *            a workflow context
+ * @param <T>
+ *            the type of task associated with this workflow
+ * @param <R>
+ *            the type of request accepted by this workflow
+ * @param <C>
+ *            the type of context accepted by this workflow
  * @author jramoyo
  */
-public interface Workflow<T extends Task<R, C>, R, C extends WorkflowContext>
-		extends NamedBean {
+public interface Workflow<T extends Task<R, C>, R, C extends WorkflowContext> extends NamedBean {
 
 	/**
 	 * Executes a request against this workflow

@@ -17,18 +17,18 @@ import com.jramoyo.flowee.core.task.Task;
 /**
  * AbstractWorkflowService
  * 
- * @param W
+ * @param <W>
  *            the type of workflow used by this service
- * @param T
+ * @param <T>
  *            the type of task associated to the used workflow
- * @param R
+ * @param <R>
  *            the type of workflow request accepted by this service
- * @param C
+ * @param <C>
  *            the type of workflow context returned by this service
  * @author amoyojan
  */
-public abstract class AbstractWorkflowService<W extends Workflow<T, R, C>, T extends Task<R, C>, R, C extends WorkflowContext>
-		implements WorkflowService<R, C> {
+public abstract class AbstractWorkflowService<W extends Workflow<T, R, C>, T extends Task<R, C>, R, C extends WorkflowContext> implements
+		WorkflowService<R, C> {
 
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -48,9 +48,7 @@ public abstract class AbstractWorkflowService<W extends Workflow<T, R, C>, T ext
 				try {
 					workflow.execute(request, context);
 				} catch (WorkflowException ex) {
-					logger.error("An error occurred while "
-							+ "executing Workflow [" + workflow.getName()
-							+ "]!", ex);
+					logger.error("An error occurred while " + "executing Workflow [" + workflow.getName() + "]!", ex);
 					throw ex;
 				}
 			}

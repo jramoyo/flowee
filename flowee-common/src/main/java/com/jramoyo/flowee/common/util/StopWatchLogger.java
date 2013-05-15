@@ -39,17 +39,14 @@ public final class StopWatchLogger {
 	}
 
 	public void trace(String message) {
-		logger.trace(String.format(FORMAT, message,
-				stopwatch.elapsed(TimeUnit.MILLISECONDS)));
+		logger.trace(String.format(FORMAT, message, stopwatch.elapsed(TimeUnit.MILLISECONDS)));
 	}
 
 	public void debug(String message) {
-		logger.debug(String.format(FORMAT, message,
-				stopwatch.elapsed(TimeUnit.MILLISECONDS)));
+		logger.debug(String.format(FORMAT, message, stopwatch.elapsed(TimeUnit.MILLISECONDS)));
 	}
 
 	public void info(String message) {
-		logger.info(String.format(FORMAT, message,
-				stopwatch.elapsed(TimeUnit.MILLISECONDS)));
+		logger.info(String.format(FORMAT, message, stopwatch.elapsed(TimeUnit.MILLISECONDS)));
 	}
 }

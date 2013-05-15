@@ -11,10 +11,10 @@ import java.util.Map;
  * An interface for a key based context
  * </p>
  * 
- * @param K
- *            a key
- * @param V
- *            a value
+ * @param <K>
+ *            the type of key
+ * @param <V>
+ *            the type of value
  * @author jramoyo
  */
 public interface Context<K, V> {

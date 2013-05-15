@@ -17,13 +17,13 @@ import com.jramoyo.flowee.core.task.Task;
 
 /**
  * <p>
- * TaskRegistry which looks-up tasks from the Spring context
+ * A TaskRegistry which looks-up tasks from the Spring context
  * </p>
  * 
  * @author jramoyo
  */
-public class ContextAwareTaskRegistry<T extends Task<R, C>, R, C extends WorkflowContext>
-		implements TaskRegistry<T, R, C>, ApplicationContextAware {
+public class ContextAwareTaskRegistry<T extends Task<R, C>, R, C extends WorkflowContext> implements TaskRegistry<T, R, C>,
+		ApplicationContextAware {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private ApplicationContext applicationContext;
@@ -37,15 +37,13 @@ public class ContextAwareTaskRegistry<T extends Task<R, C>, R, C extends Workflo
 			logger.error("Unable to lookup Task [" + id + "]!", ex);
 			return null;
 		} catch (ClassCastException ex) {
-			logger.error("Bean [" + id + "] is not" + " an instance of Task !",
-					ex);
+			logger.error("Bean [" + id + "] is not" + " an instance of Task !", ex);
 			return null;
 		}
 	}
 
 	@Override
-	public void setApplicationContext(ApplicationContext applicationContext)
-			throws BeansException {
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
 }

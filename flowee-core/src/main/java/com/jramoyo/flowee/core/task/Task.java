@@ -20,10 +20,10 @@ import com.jramoyo.flowee.core.WorkflowException;
  * information using the supplied workflow context.
  * </p>
  * 
- * @param R
- *            a workflow request
- * @param C
- *            a workflow context
+ * @param <R>
+ *            the type of workflow request accepted by this task
+ * @param <C>
+ *            the type of workflow context accepted by this task
  * @author jramoyo
  */
 public interface Task<R, C extends WorkflowContext> extends NamedBean {

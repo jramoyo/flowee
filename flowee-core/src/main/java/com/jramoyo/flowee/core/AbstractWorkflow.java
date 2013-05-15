@@ -22,8 +22,7 @@ import com.jramoyo.flowee.core.task.TaskStatus;
  * 
  * @author jramoyo
  */
-public class AbstractWorkflow<T extends Task<R, C>, R, C extends WorkflowContext>
-		implements Workflow<T, R, C> {
+public class AbstractWorkflow<T extends Task<R, C>, R, C extends WorkflowContext> implements Workflow<T, R, C> {
 
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -59,17 +58,14 @@ public class AbstractWorkflow<T extends Task<R, C>, R, C extends WorkflowContext
 				try {
 					TaskStatus status = task.execute(request, context);
 					if (status == TaskStatus.SKIP) {
-						logger.debug("Task [" + task.getName()
-								+ "] was skipped");
+						logger.debug("Task [" + task.getName() + "] was skipped");
 					}
 					if (status == TaskStatus.BREAK) {
-						logger.debug("Task [" + task.getName()
-								+ "] broke the execution chain");
+						logger.debug("Task [" + task.getName() + "] broke the execution chain");
 						break;
 					}
 				} catch (Exception ex) {
-					throw new WorkflowException("An exception occured while"
-							+ " executing Task [" + task.getName() + "]!", ex);
+					throw new WorkflowException("An exception occured while" + " executing Task [" + task.getName() + "]!", ex);
 				}
 			}
 		} finally {

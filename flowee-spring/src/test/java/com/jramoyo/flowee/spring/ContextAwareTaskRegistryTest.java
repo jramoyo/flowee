@@ -33,15 +33,13 @@ public class ContextAwareTaskRegistryTest {
 	public void testGetAction() {
 		Assert.assertNotNull("Task is null", registry.getTask("testTask"));
 		Assert.assertNull("Task is not null", registry.getTask("unknownAction"));
-		Assert.assertNull("Task is not null",
-				registry.getTask("contextAwareTaskRegistry"));
+		Assert.assertNull("Task is not null", registry.getTask("contextAwareTaskRegistry"));
 	}
 
 	public static class TestTask extends AbstractTask<String, WorkflowContext> {
 
 		@Override
-		protected TaskStatus attemptExecute(String request,
-				WorkflowContext context) throws WorkflowException {
+		protected TaskStatus attemptExecute(String request, WorkflowContext context) throws WorkflowException {
 			return TaskStatus.CONTINUE;
 		}
 	}

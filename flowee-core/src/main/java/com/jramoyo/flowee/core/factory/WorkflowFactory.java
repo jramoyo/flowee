@@ -19,13 +19,13 @@ import com.jramoyo.flowee.core.task.Task;
  * executed against the given request
  * </p>
  * 
- * @param W
+ * @param <W>
  *            the type of workflow returned by this factory
- * @param T
+ * @param <T>
  *            the type of task associated to the returned workflow
- * @param R
+ * @param <R>
  *            the type of workflow request accepted by this factory
- * @param C
+ * @param <C>
  *            the type of workflow context accepted by this factory
  * @author jramoyo
  */

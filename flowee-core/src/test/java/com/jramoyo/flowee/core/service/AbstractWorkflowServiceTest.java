@@ -47,32 +47,20 @@ public class AbstractWorkflowServiceTest {
 
 	@Test
 	public void testProcess() throws WorkflowException {
-		Set<Workflow<Task<String, WorkflowContext>, String, WorkflowContext>> workflows = Sets
-				.newHashSet();
+		Set<Workflow<Task<String, WorkflowContext>, String, WorkflowContext>> workflows = Sets.newHashSet();
 		workflows.add(createWorkflow());
-		Mockito.when(
-				factory.createWorkflows(Mockito.anyString(),
-						Mockito.any(WorkflowContext.class))).thenReturn(
-				workflows);
+		Mockito.when(factory.createWorkflows(Mockito.anyString(), Mockito.any(WorkflowContext.class))).thenReturn(workflows);
 
 		service.process("request");
-		Mockito.verify(task).execute(Mockito.anyString(),
-				Mockito.any(WorkflowContext.class));
+		Mockito.verify(task).execute(Mockito.anyString(), Mockito.any(WorkflowContext.class));
 	}
 
 	@Test
 	public void testProcessException() throws WorkflowException {
-		Set<Workflow<Task<String, WorkflowContext>, String, WorkflowContext>> workflows = Sets
-				.newHashSet();
+		Set<Workflow<Task<String, WorkflowContext>, String, WorkflowContext>> workflows = Sets.newHashSet();
 		workflows.add(createWorkflow());
-		Mockito.when(
-				factory.createWorkflows(Mockito.anyString(),
-						Mockito.any(WorkflowContext.class))).thenReturn(
-				workflows);
-		Mockito.doThrow(new WorkflowException("Mock Exception"))
-				.when(task)
-				.execute(Mockito.anyString(),
-						Mockito.any(WorkflowContext.class));
+		Mockito.when(factory.createWorkflows(Mockito.anyString(), Mockito.any(WorkflowContext.class))).thenReturn(workflows);
+		Mockito.doThrow(new WorkflowException("Mock Exception")).when(task).execute(Mockito.anyString(), Mockito.any(WorkflowContext.class));
 
 		try {
 			service.process("request");

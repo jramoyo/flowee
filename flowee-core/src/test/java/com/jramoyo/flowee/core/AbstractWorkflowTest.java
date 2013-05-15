@@ -51,10 +51,7 @@ public class AbstractWorkflowTest {
 
 	@Test
 	public void testExecuteException() throws WorkflowException {
-		Mockito.doThrow(new WorkflowException("Mock Exception"))
-				.when(task)
-				.execute(Mockito.anyString(),
-						Mockito.any(WorkflowContext.class));
+		Mockito.doThrow(new WorkflowException("Mock Exception")).when(task).execute(Mockito.anyString(), Mockito.any(WorkflowContext.class));
 
 		@SuppressWarnings("unchecked")
 		List<Task<String, WorkflowContext>> tasks = Lists.newArrayList(task);
@@ -68,9 +65,7 @@ public class AbstractWorkflowTest {
 		}
 	}
 
-	public static class TestWorkflow
-			extends
-			AbstractWorkflow<Task<String, WorkflowContext>, String, WorkflowContext> {
+	public static class TestWorkflow extends AbstractWorkflow<Task<String, WorkflowContext>, String, WorkflowContext> {
 		public TestWorkflow() {
 			super("TEST");
 		}

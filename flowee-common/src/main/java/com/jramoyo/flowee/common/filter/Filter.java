@@ -11,7 +11,10 @@ import com.jramoyo.flowee.common.context.StringContext;
  * An interface for a condition filter
  * </p>
  * 
- * 
+ * @param <R>
+ *            the type of request accepted by this filter
+ * @param <C>
+ *            the type of context accepted by this filter
  * @author jramoyo
  */
 public interface Filter<R, C extends StringContext> {

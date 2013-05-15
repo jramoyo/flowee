@@ -12,9 +12,9 @@ import com.jramoyo.flowee.core.WorkflowException;
  * An interface for workflow services
  * </p>
  * 
- * @param R
+ * @param <R>
  *            the type of workflow request accepted by this service
- * @param C
+ * @param <C>
  *            the type of workflow context returned by this service
  * @author jramoyo
  */

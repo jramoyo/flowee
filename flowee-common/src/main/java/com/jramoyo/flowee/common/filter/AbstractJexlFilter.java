@@ -25,8 +25,7 @@ import com.jramoyo.flowee.common.util.StopWatchLogger;
  * @see populateJexlContext(R, C)
  * @author jramoyo
  */
-public abstract class AbstractJexlFilter<R, C extends StringContext> implements
-		Filter<R, C> {
+public abstract class AbstractJexlFilter<R, C extends StringContext> implements Filter<R, C> {
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private JexlEngine jexlEngine = new JexlEngine();
@@ -36,8 +35,8 @@ public abstract class AbstractJexlFilter<R, C extends StringContext> implements
 	 * The condition can be any JEXL boolean expression:
 	 * </p>
 	 * <ul>
-	 * <li>obj.field == 'value'</>
-	 * <li>obj.field != null && obj.field == 'value'</>
+	 * <li><code>obj.field == 'value'</code></li>
+	 * <li><code>obj.field != null && obj.field == 'value'</code></li>
 	 * </ul>
 	 */
 	@Override
@@ -46,15 +45,12 @@ public abstract class AbstractJexlFilter<R, C extends StringContext> implements
 		try {
 			stopWatchLogger.start();
 
-			String booleanCondition = "if (" + condition
-					+ ") {return true;} else {return false;}";
+			String booleanCondition = "if (" + condition + ") {return true;} else {return false;}";
 
 			logger.debug("Evaluating JEXL condition: " + booleanCondition);
-			Expression expression = jexlEngine
-					.createExpression(booleanCondition);
+			Expression expression = jexlEngine.createExpression(booleanCondition);
 
-			Boolean result = (Boolean) expression.evaluate(populateJexlContext(
-					request, context));
+			Boolean result = (Boolean) expression.evaluate(populateJexlContext(request, context));
 			return result.booleanValue();
 		} finally {
 			stopWatchLogger.debug("Evaluated JEXL expression");

@@ -48,23 +48,17 @@ public class AbstractConfigurableWorkflowFactoryTest {
 	public void testCreateWorkflows() {
 		WorkflowContext context = new WorkflowContext();
 
-		Mockito.when(filter.evaluate("workflow1", context, "text=='workflow1'"))
-				.thenReturn(Boolean.TRUE);
-		Mockito.when(filter.evaluate("workflow2", context, "text=='workflow2'"))
-				.thenReturn(Boolean.TRUE);
-		Mockito.when(registry.getTask("task1")).thenReturn(
-				new TestTask("task1"));
-		Mockito.when(registry.getTask("task1")).thenReturn(
-				new TestTask("task2"));
+		Mockito.when(filter.evaluate("workflow1", context, "text=='workflow1'")).thenReturn(Boolean.TRUE);
+		Mockito.when(filter.evaluate("workflow2", context, "text=='workflow2'")).thenReturn(Boolean.TRUE);
+		Mockito.when(registry.getTask("task1")).thenReturn(new TestTask("task1"));
+		Mockito.when(registry.getTask("task1")).thenReturn(new TestTask("task2"));
 
-		Set<TestWorkflow> workflow1 = factory.createWorkflows("workflow1",
-				context);
+		Set<TestWorkflow> workflow1 = factory.createWorkflows("workflow1", context);
 		Assert.assertNotNull("Workflows are null", workflow1);
 		Assert.assertFalse("Workflows are empty", workflow1.isEmpty());
 		Assert.assertEquals("Incorrect workflows size", 1, workflow1.size());
 
-		Set<TestWorkflow> workflow2 = factory.createWorkflows("workflow2",
-				context);
+		Set<TestWorkflow> workflow2 = factory.createWorkflows("workflow2", context);
 		Assert.assertNotNull("Workflows are null", workflow2);
 		Assert.assertFalse("Workflows are empty", workflow2.isEmpty());
 		Assert.assertEquals("Incorrect workflows size", 1, workflow2.size());
@@ -72,26 +66,22 @@ public class AbstractConfigurableWorkflowFactoryTest {
 
 	@Test
 	public void testAssembleWorkflow() {
-		Mockito.when(registry.getTask("task1")).thenReturn(
-				new TestTask("task1"));
-		Mockito.when(registry.getTask("task2")).thenReturn(
-				new TestTask("task1"));
+		Mockito.when(registry.getTask("task1")).thenReturn(new TestTask("task1"));
+		Mockito.when(registry.getTask("task2")).thenReturn(new TestTask("task1"));
 
 		TestWorkflow workflow1 = factory.assembleWorkflow("workflow1");
 		Assert.assertNotNull("Rule is null", workflow1);
 		Assert.assertEquals("Incorrect name", "workflow1", workflow1.getName());
 		Assert.assertNotNull("Tasks are null", workflow1.getTasks());
 		Assert.assertFalse("Tasks are empty", workflow1.getTasks().isEmpty());
-		Assert.assertEquals("Incorrect actions size", 1, workflow1.getTasks()
-				.size());
+		Assert.assertEquals("Incorrect actions size", 1, workflow1.getTasks().size());
 
 		TestWorkflow workflow2 = factory.assembleWorkflow("workflow2");
 		Assert.assertNotNull("Rule is null", workflow2);
 		Assert.assertEquals("Incorrect name", "workflow2", workflow2.getName());
 		Assert.assertNotNull("Tasks are null", workflow2.getTasks());
 		Assert.assertFalse("Tasks are empty", workflow2.getTasks().isEmpty());
-		Assert.assertEquals("Incorrect actions size", 2, workflow2.getTasks()
-				.size());
+		Assert.assertEquals("Incorrect actions size", 2, workflow2.getTasks().size());
 
 		TestWorkflow workflow3 = factory.assembleWorkflow("workflow3");
 		Assert.assertNotNull("Rule is null", workflow3);
@@ -105,9 +95,7 @@ public class AbstractConfigurableWorkflowFactoryTest {
 		MockitoAnnotations.initMocks(this);
 	}
 
-	private static class TestWorkflowFactory
-			extends
-			AbstractConfigurableWorkflowFactory<TestWorkflow, TestTask, String, WorkflowContext> {
+	private static class TestWorkflowFactory extends AbstractConfigurableWorkflowFactory<TestWorkflow, TestTask, String, WorkflowContext> {
 
 		@Override
 		protected Map<String, String> fetchConfiguration() {
@@ -140,8 +128,7 @@ public class AbstractConfigurableWorkflowFactoryTest {
 		}
 	}
 
-	private static class TestWorkflow extends
-			AbstractWorkflow<TestTask, String, WorkflowContext> {
+	private static class TestWorkflow extends AbstractWorkflow<TestTask, String, WorkflowContext> {
 
 		public TestWorkflow(String name) {
 			super(name);
@@ -155,8 +142,7 @@ public class AbstractConfigurableWorkflowFactoryTest {
 		}
 
 		@Override
-		protected TaskStatus attemptExecute(String request,
-				WorkflowContext context) throws WorkflowException {
+		protected TaskStatus attemptExecute(String request, WorkflowContext context) throws WorkflowException {
 			return TaskStatus.CONTINUE;
 		}
 	}

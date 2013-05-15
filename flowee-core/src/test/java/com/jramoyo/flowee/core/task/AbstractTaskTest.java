@@ -26,10 +26,8 @@ public class AbstractTaskTest {
 	@Test
 	public void testExecute() throws WorkflowException {
 		WorkflowContext context = new WorkflowContext();
-		Assert.assertEquals("Incorrect Status", TaskStatus.CONTINUE,
-				testTask.execute("supported", context));
-		Assert.assertEquals("Incorrect Status", TaskStatus.SKIP,
-				testTask.execute("not supported", context));
+		Assert.assertEquals("Incorrect Status", TaskStatus.CONTINUE, testTask.execute("supported", context));
+		Assert.assertEquals("Incorrect Status", TaskStatus.SKIP, testTask.execute("not supported", context));
 	}
 
 	@Test
@@ -45,8 +43,7 @@ public class AbstractTaskTest {
 
 		exceptionTask.setMaxAttempts(1);
 		exceptionTask.setIsSkipOnException(true);
-		Assert.assertEquals("Incorrect Status", TaskStatus.SKIP,
-				exceptionTask.execute("value", context));
+		Assert.assertEquals("Incorrect Status", TaskStatus.SKIP, exceptionTask.execute("value", context));
 	}
 
 	private static class TestTask extends AbstractTask<String, WorkflowContext> {
@@ -56,20 +53,17 @@ public class AbstractTaskTest {
 		}
 
 		@Override
-		protected boolean isInputSupported(String request,
-				WorkflowContext context) {
+		protected boolean isInputSupported(String request, WorkflowContext context) {
 			return request.equals("supported");
 		}
 
 		@Override
-		protected TaskStatus attemptExecute(String request,
-				WorkflowContext context) throws WorkflowException {
+		protected TaskStatus attemptExecute(String request, WorkflowContext context) throws WorkflowException {
 			return TaskStatus.CONTINUE;
 		}
 	}
 
-	private static class ExceptionTask extends
-			AbstractTask<String, WorkflowContext> {
+	private static class ExceptionTask extends AbstractTask<String, WorkflowContext> {
 		private int attempts = 0;
 
 		public ExceptionTask() {
@@ -77,8 +71,7 @@ public class AbstractTaskTest {
 		}
 
 		@Override
-		protected TaskStatus attemptExecute(String request,
-				WorkflowContext context) throws WorkflowException {
+		protected TaskStatus attemptExecute(String request, WorkflowContext context) throws WorkflowException {
 			attempts++;
 			throw new WorkflowException("Mocked Exception!");
 		}

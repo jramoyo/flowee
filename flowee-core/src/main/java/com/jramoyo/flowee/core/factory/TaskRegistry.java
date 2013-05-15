@@ -17,11 +17,11 @@ import com.jramoyo.flowee.core.task.Task;
  * factory
  * </p>
  * 
- * @param T
+ * @param <T>
  *            the type of workflow task returned by this registry
- * @param R
+ * @param <R>
  *            the type of workflow request accepted by this registry
- * @param C
+ * @param <C>
  *            the type of workflow context accepted by this registry
  * @author amoyojan
  */

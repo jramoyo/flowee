@@ -46,14 +46,12 @@ public abstract class AbstractConfigurableWorkflowFactory<W extends Workflow<T, 
 			stopWatchLogger.start();
 
 			// Fetch and iterate through the configuration
-			for (Entry<String, String> configEntry : fetchConfiguration()
-					.entrySet()) {
+			for (Entry<String, String> configEntry : fetchConfiguration().entrySet()) {
 				String workflowName = configEntry.getKey();
 				String workflowCondition = configEntry.getValue();
 
 				// Evaluate the workflow condition
-				logger.debug("Evaluating condition for Workflow ["
-						+ workflowName + "]: " + workflowCondition);
+				logger.debug("Evaluating condition for Workflow [" + workflowName + "]: " + workflowCondition);
 				if (filter.evaluate(request, context, workflowCondition)) {
 					logger.debug("Assembling Workflow [" + workflowName + "]");
 					W rule = assembleWorkflow(workflowName);
@@ -105,11 +103,9 @@ public abstract class AbstractConfigurableWorkflowFactory<W extends Workflow<T, 
 			// Fetch the associated tasks
 			List<T> tasks = Lists.newArrayList();
 			List<String> taskNames = fetchTaskNames(name);
-			logger.debug("Fetched " + taskNames.size()
-					+ " tasks for Workflow [" + name + "]");
+			logger.debug("Fetched " + taskNames.size() + " tasks for Workflow [" + name + "]");
 			for (String taskName : taskNames) {
-				logger.debug("Attaching Task [" + taskName + "] to Workflow ["
-						+ name + "]");
+				logger.debug("Attaching Task [" + taskName + "] to Workflow [" + name + "]");
 				tasks.add(taskRegistry.getTask(taskName));
 			}
 			workflow.setTasks(tasks);

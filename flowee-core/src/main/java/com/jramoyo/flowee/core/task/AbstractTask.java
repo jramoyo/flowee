@@ -21,8 +21,7 @@ import com.jramoyo.flowee.core.WorkflowException;
  * @see setSkipOnException(boolean)
  * @author jramoyo
  */
-public abstract class AbstractTask<R, C extends WorkflowContext> implements
-		Task<R, C> {
+public abstract class AbstractTask<R, C extends WorkflowContext> implements Task<R, C> {
 
 	protected final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -50,8 +49,7 @@ public abstract class AbstractTask<R, C extends WorkflowContext> implements
 					status = retryExecute(request, context, 1);
 				} catch (WorkflowException ex) {
 					if (isSkipOnException) {
-						logger.warn("Skipping Task [" + getName()
-								+ "] due to an exception!", ex);
+						logger.warn("Skipping Task [" + getName() + "] due to an exception!", ex);
 						status = TaskStatus.SKIP;
 					} else {
 						throw ex;
@@ -140,8 +138,7 @@ public abstract class AbstractTask<R, C extends WorkflowContext> implements
 	 * @return
 	 * @throws WorkflowException
 	 */
-	protected abstract TaskStatus attemptExecute(R request, C context)
-			throws WorkflowException;
+	protected abstract TaskStatus attemptExecute(R request, C context) throws WorkflowException;
 
 	/**
 	 * <p>
@@ -165,16 +162,14 @@ public abstract class AbstractTask<R, C extends WorkflowContext> implements
 	/*
 	 * Executes this task and retries whenever a WorkflowException occurs
 	 */
-	private TaskStatus retryExecute(R request, C context, int attempts)
-			throws WorkflowException {
+	private TaskStatus retryExecute(R request, C context, int attempts) throws WorkflowException {
 		try {
 			return attemptExecute(request, context);
 		} catch (WorkflowException ex) {
 			if (attempts < maxAttempts) {
 				attempts++;
 				logger.warn("An exception occured: " + ex.getMessage());
-				logger.warn("Retrying Task [" + getName() + "], attempts: "
-						+ attempts + " of " + maxAttempts);
+				logger.warn("Retrying Task [" + getName() + "], attempts: " + attempts + " of " + maxAttempts);
 				return retryExecute(request, context, attempts);
 			} else {
 				throw ex;
