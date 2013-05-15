@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>flowee</artifactId>
+		<groupId>com.jramoyo</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.jramoyo.flowee</groupId>
+	<artifactId>flowee-core</artifactId>
+	<name>Flowee Core</name>
+	<url>https://code.google.com/p/flowee</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.jramoyo.flowee</groupId>
+			<artifactId>flowee-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jramoyo.flowee</groupId>
+			<artifactId>flowee-common</artifactId>
+			<version>${project.parent.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
