@@ -14,7 +14,7 @@ import com.jramoyo.flowee.core.task.Task;
  * An interface for a workflow
  * </p>
  * <p>
- * A workflow processes a given request against a sequence of 1 or more
+ * A workflow processes a given request against a sequence of one or more
  * configured tasks.
  * </p>
  * 

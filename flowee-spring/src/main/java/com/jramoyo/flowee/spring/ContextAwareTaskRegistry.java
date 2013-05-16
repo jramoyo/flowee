@@ -37,7 +37,7 @@ public class ContextAwareTaskRegistry<T extends Task<R, C>, R, C extends Workflo
 			logger.error("Unable to lookup Task [" + id + "]!", ex);
 			return null;
 		} catch (ClassCastException ex) {
-			logger.error("Bean [" + id + "] is not" + " an instance of Task !", ex);
+			logger.error("Bean [" + id + "] is not a Task instance!", ex);
 			return null;
 		}
 	}
