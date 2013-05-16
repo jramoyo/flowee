@@ -30,22 +30,79 @@ public final class StopWatchLogger {
 		this.stopwatch = new Stopwatch();
 	}
 
+	/**
+	 * Starts the stop watch
+	 */
 	public void start() {
 		stopwatch.start();
 	}
 
+	/**
+	 * Stops the stop watch
+	 */
 	public void stop() {
 		stopwatch.stop();
 	}
 
+	/**
+	 * <p>
+	 * Logs a TRACE message and appends the elapsed time since the stop watch
+	 * has started
+	 * </p>
+	 * <p>
+	 * The message will be logged in the following format:
+	 * 
+	 * <pre>
+	 * [MESSAGE] - Time Elapsed: [ELAPSED] ms.
+	 * </pre>
+	 * 
+	 * </p>
+	 * 
+	 * @param message
+	 *            a message to log
+	 */
 	public void trace(String message) {
 		logger.trace(String.format(FORMAT, message, stopwatch.elapsed(TimeUnit.MILLISECONDS)));
 	}
 
+	/**
+	 * <p>
+	 * Logs a DEBUG message and appends the elapsed time since the stop watch
+	 * has started
+	 * </p>
+	 * <p>
+	 * The message will be logged in the following format:
+	 * 
+	 * <pre>
+	 * [MESSAGE] - Time Elapsed: [ELAPSED] ms.
+	 * </pre>
+	 * 
+	 * </p>
+	 * 
+	 * @param message
+	 *            a message to log
+	 */
 	public void debug(String message) {
 		logger.debug(String.format(FORMAT, message, stopwatch.elapsed(TimeUnit.MILLISECONDS)));
 	}
 
+	/**
+	 * <p>
+	 * Logs an INFO message and appends the elapsed time since the stop watch
+	 * has started
+	 * </p>
+	 * <p>
+	 * The message will be logged in the following format:
+	 * 
+	 * <pre>
+	 * [MESSAGE] - Time Elapsed: [ELAPSED] ms.
+	 * </pre>
+	 * 
+	 * </p>
+	 * 
+	 * @param message
+	 *            a message log
+	 */
 	public void info(String message) {
 		logger.info(String.format(FORMAT, message, stopwatch.elapsed(TimeUnit.MILLISECONDS)));
 	}
