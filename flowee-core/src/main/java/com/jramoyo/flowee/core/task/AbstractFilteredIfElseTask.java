@@ -13,6 +13,7 @@ import com.jramoyo.flowee.core.WorkflowContext;
  * <code>Filter</code>s
  * </p>
  * 
+ * @see com.jramoyo.flowee.common.filter.Filter
  * @author jramoyo
  */
 public abstract class AbstractFilteredIfElseTask<R, C extends WorkflowContext> extends AbstractIfElseTask<R, C> {

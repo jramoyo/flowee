@@ -18,7 +18,7 @@ import com.jramoyo.flowee.core.WorkflowException;
  * 
  * @see isInputSupported(R, C)
  * @see setMaxAttempts(int)
- * @see setSkipOnException(boolean)
+ * @see setIsSkipOnException(boolean)
  * @author jramoyo
  */
 public abstract class AbstractTask<R, C extends WorkflowContext> implements Task<R, C> {
