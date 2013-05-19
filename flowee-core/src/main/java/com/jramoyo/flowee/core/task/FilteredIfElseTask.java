@@ -1,5 +1,5 @@
 /*
- * AbstractFilteredIfElseTask.java
+ * FilteredIfElseTask.java
  * 16 May 2013
  */
 package com.jramoyo.flowee.core.task;
@@ -9,14 +9,13 @@ import com.jramoyo.flowee.core.WorkflowContext;
 
 /**
  * <p>
- * An abstract class for building conditional workflow tasks making use of
- * <code>Filter</code>s
+ * A conditional workflow task making use of <code>Filter</code>s
  * </p>
  * 
  * @see com.jramoyo.flowee.common.filter.Filter
  * @author jramoyo
  */
-public abstract class AbstractFilteredIfElseTask<R, C extends WorkflowContext> extends AbstractIfElseTask<R, C> {
+public class FilteredIfElseTask<R, C extends WorkflowContext> extends AbstractIfElseTask<R, C> {
 
 	private Filter<R, C> filter;
 
