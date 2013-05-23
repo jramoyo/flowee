@@ -11,7 +11,7 @@
 
 	<groupId>com.jramoyo.flowee</groupId>
 	<artifactId>flowee-sample</artifactId>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<name>Flowee Sample</name>
 	<description>Sample module for Flowee</description>
 	<url>https://code.google.com/p/flowee</url>

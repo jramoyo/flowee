@@ -1,0 +1,32 @@
+<assembly>
+	<id>bin</id>
+
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<moduleSets>
+		<moduleSet>
+			<useAllReactorProjects>true</useAllReactorProjects>
+			<includes>
+				<include>com.jramoyo.flowee:flowee-common</include>
+				<include>com.jramoyo.flowee:flowee-core</include>
+				<include>com.jramoyo.flowee:flowee-spring</include>
+			</includes>
+			<binaries>
+				<outputDirectory>modules/</outputDirectory>
+				<unpack>false</unpack>
+				<dependencySets>
+					<dependencySet>
+						<excludes>
+							<exclude>com.jramoyo.flowee:*</exclude>
+						</excludes>
+						<unpack>false</unpack>
+						<scope>runtime</scope>
+						<outputDirectory>lib/</outputDirectory>
+					</dependencySet>
+				</dependencySets>
+			</binaries>
+		</moduleSet>
+	</moduleSets>
+</assembly>
