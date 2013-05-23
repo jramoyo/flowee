@@ -16,6 +16,11 @@ import com.jramoyo.flowee.core.WorkflowException;
  * A composite task is composed of one or more sub-tasks which are treated as a
  * single atomic unit of processing.
  * </p>
+ * <p>
+ * The return status of the sub-tasks controls the iteration performed by the
+ * parent composite task. The parent task however, always returns
+ * <code>TaskStatus.CONTINUE</code>.
+ * </p>
  * 
  * @author jramoyo
  */

@@ -10,8 +10,11 @@ import com.jramoyo.flowee.core.WorkflowException;
 /**
  * <p>
  * An abstract class for building conditional workflow tasks which executes one
- * task if the request holds true against the defined condition or another task
- * if it holds false
+ * sub-task if the request holds true against the defined condition or another
+ * sub-task if it holds false
+ * </p>
+ * <p>
+ * The return status of the executed sub-task is returned by the parent task.
  * </p>
  * 
  * @see isTrue(R, C)

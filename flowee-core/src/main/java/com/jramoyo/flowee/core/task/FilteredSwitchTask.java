@@ -27,13 +27,13 @@ import com.jramoyo.flowee.core.WorkflowException;
  * </p>
  * <p>
  * Because multiple sub-tasks may get executed, the return status of each
- * executed sub-task are ignored.
+ * executed sub-task are ignored. The parent switch task always returns
+ * <code>TaskStatus.CONTINUE</code>.
  * </p>
  * 
  * @author jramoyo
  */
-public class FilteredSwitchTask<R, C extends WorkflowContext> extends
-		AbstractTask<R, C> {
+public class FilteredSwitchTask<R, C extends WorkflowContext> extends AbstractTask<R, C> {
 
 	private Map<String, Task<R, C>> tasks;
 	private Filter<R, C> filter;
@@ -54,8 +54,7 @@ public class FilteredSwitchTask<R, C extends WorkflowContext> extends
 	}
 
 	@Override
-	protected TaskStatus attemptExecute(R request, C context)
-			throws WorkflowException {
+	protected TaskStatus attemptExecute(R request, C context) throws WorkflowException {
 		for (Entry<String, Task<R, C>> entry : tasks.entrySet()) {
 			String condition = entry.getKey();
 			Task<R, C> task = entry.getValue();

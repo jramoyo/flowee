@@ -38,8 +38,7 @@ public class FilteredSwitchTaskTest {
 	private Filter<String, WorkflowContext> filter;
 
 	@InjectMocks
-	private FilteredSwitchTask<String, WorkflowContext> switchTask = new FilteredSwitchTask<String, WorkflowContext>(
-			"SWITCH");
+	private FilteredSwitchTask<String, WorkflowContext> switchTask = new FilteredSwitchTask<String, WorkflowContext>("SWITCH");
 
 	@Before
 	public void before() {
@@ -50,14 +49,10 @@ public class FilteredSwitchTaskTest {
 	public void testSwitch() throws WorkflowException {
 		WorkflowContext context = new WorkflowContext();
 
-		Mockito.when(filter.evaluate("task1", context, "task1")).thenReturn(
-				true);
-		Mockito.when(filter.evaluate("task1", context, "task2")).thenReturn(
-				false);
-		Mockito.when(filter.evaluate("task2", context, "task1")).thenReturn(
-				false);
-		Mockito.when(filter.evaluate("task2", context, "task2")).thenReturn(
-				true);
+		Mockito.when(filter.evaluate("task1", context, "task1")).thenReturn(true);
+		Mockito.when(filter.evaluate("task1", context, "task2")).thenReturn(false);
+		Mockito.when(filter.evaluate("task2", context, "task1")).thenReturn(false);
+		Mockito.when(filter.evaluate("task2", context, "task2")).thenReturn(true);
 
 		Map<String, Task<String, WorkflowContext>> tasks = Maps.newHashMap();
 		tasks.put("task1", task1);

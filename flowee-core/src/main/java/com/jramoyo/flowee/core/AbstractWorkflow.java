@@ -19,7 +19,13 @@ import com.jramoyo.flowee.core.task.TaskStatus;
  * <p>
  * A generic abstract class for defining a workflow
  * </p>
+ * <p>
+ * This implementation iterates through a list of tasks and executes them
+ * one-by-one. The return status of the tasks controls the iteration of the
+ * workflow.
+ * </p>
  * 
+ * @see com.jramoyo.flowee.core.task.TaskStatus
  * @author jramoyo
  */
 public class AbstractWorkflow<T extends Task<R, C>, R, C extends WorkflowContext> implements Workflow<T, R, C> {
