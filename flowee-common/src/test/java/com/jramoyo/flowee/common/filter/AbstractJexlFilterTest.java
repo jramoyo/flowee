@@ -4,11 +4,13 @@
  */
 package com.jramoyo.flowee.common.filter;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import org.apache.commons.jexl2.JexlContext;
 import org.apache.commons.jexl2.JexlException;
 import org.apache.commons.jexl2.MapContext;
 import org.apache.commons.jexl2.ReadonlyContext;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -27,12 +29,12 @@ public class AbstractJexlFilterTest {
 
 	@Test
 	public void testEvaluate() {
-		Assert.assertTrue("Incorrect evaluation", filter.evaluate("value", new StringContext(), "text == 'value'"));
-		Assert.assertTrue("Incorrect evaluation", filter.evaluate("value", new StringContext(), "text != 'incorrect'"));
+		assertTrue("Incorrect evaluation", filter.evaluate("value", new StringContext(), "text == 'value'"));
+		assertTrue("Incorrect evaluation", filter.evaluate("value", new StringContext(), "text != 'incorrect'"));
 
 		try {
 			filter.evaluate("value", new StringContext(), "text = 'incorrect'");
-			Assert.fail("Exception must be thrown!");
+			fail("Exception must be thrown!");
 		} catch (JexlException ex) {
 		}
 	}

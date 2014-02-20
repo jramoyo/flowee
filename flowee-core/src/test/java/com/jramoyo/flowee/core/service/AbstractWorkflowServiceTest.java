@@ -10,10 +10,12 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -29,6 +31,7 @@ import com.jramoyo.flowee.core.task.Task;
  * 
  * @author amoyojan
  */
+@RunWith(MockitoJUnitRunner.class)
 public class AbstractWorkflowServiceTest {
 
 	@Mock
@@ -69,8 +72,7 @@ public class AbstractWorkflowServiceTest {
 		}
 	}
 
-	private static class TestWorkflowService
-			extends
+	private static class TestWorkflowService extends
 			AbstractWorkflowService<Workflow<Task<String, WorkflowContext>, String, WorkflowContext>, Task<String, WorkflowContext>, String, WorkflowContext> {
 		@Override
 		protected WorkflowContext createContext() {

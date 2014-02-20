@@ -4,13 +4,14 @@
  */
 package com.jramoyo.flowee.core.task;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.initMocks;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import com.jramoyo.flowee.core.WorkflowContext;
 import com.jramoyo.flowee.core.WorkflowException;
@@ -33,7 +34,7 @@ public class AbstractIfElseTaskTest {
 
 	@Before
 	public void before() {
-		MockitoAnnotations.initMocks(this);
+		initMocks(this);
 		ifElseTask.setIfTask(ifTask);
 		ifElseTask.setElseTask(elseTask);
 	}
@@ -43,7 +44,7 @@ public class AbstractIfElseTaskTest {
 		WorkflowContext context = new WorkflowContext();
 		ifElseTask.execute("true", context);
 
-		Mockito.verify(ifTask).execute("true", context);
+		verify(ifTask).execute("true", context);
 	}
 
 	@Test
@@ -51,7 +52,7 @@ public class AbstractIfElseTaskTest {
 		WorkflowContext context = new WorkflowContext();
 		ifElseTask.execute("false", context);
 
-		Mockito.verify(elseTask).execute("false", context);
+		verify(elseTask).execute("false", context);
 	}
 
 	private static class TestIfElseTask extends AbstractIfElseTask<String, WorkflowContext> {

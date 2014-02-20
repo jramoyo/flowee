@@ -4,17 +4,17 @@
  */
 package com.jramoyo.flowee.core;
 
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.verify;
+
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.common.collect.Lists;
 import com.jramoyo.flowee.core.task.Task;
@@ -24,19 +24,14 @@ import com.jramoyo.flowee.core.task.Task;
  * 
  * @author jramoyo
  */
-@RunWith(BlockJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class AbstractWorkflowTest {
 
 	@Mock
 	private Task<String, WorkflowContext> task;
 
 	@InjectMocks
-	private TestWorkflow workflow = new TestWorkflow();
-
-	@Before
-	public void before() {
-		MockitoAnnotations.initMocks(this);
-	}
+	private TestWorkflow workflow;
 
 	@Test
 	public void testExecute() throws WorkflowException {
@@ -46,7 +41,7 @@ public class AbstractWorkflowTest {
 
 		WorkflowContext context = new WorkflowContext();
 		workflow.execute("value", context);
-		Mockito.verify(task).execute("value", context);
+		verify(task).execute("value", context);
 	}
 
 	@Test
@@ -60,7 +55,7 @@ public class AbstractWorkflowTest {
 		try {
 			WorkflowContext context = new WorkflowContext();
 			workflow.execute("value", context);
-			Assert.fail("Exception must be thrown!");
+			fail("Exception must be thrown!");
 		} catch (WorkflowException ex) {
 		}
 	}

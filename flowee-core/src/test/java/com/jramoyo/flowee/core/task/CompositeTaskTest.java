@@ -4,13 +4,14 @@
  */
 package com.jramoyo.flowee.core.task;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.initMocks;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import com.google.common.collect.Lists;
 import com.jramoyo.flowee.core.WorkflowContext;
@@ -34,7 +35,7 @@ public class CompositeTaskTest {
 
 	@Before
 	public void before() {
-		MockitoAnnotations.initMocks(this);
+		initMocks(this);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -44,7 +45,7 @@ public class CompositeTaskTest {
 		compositeTask.setTasks(Lists.newArrayList(task1, task2));
 		compositeTask.execute("request", context);
 
-		Mockito.verify(task1).execute("request", context);
-		Mockito.verify(task2).execute("request", context);
+		verify(task1).execute("request", context);
+		verify(task2).execute("request", context);
 	}
 }

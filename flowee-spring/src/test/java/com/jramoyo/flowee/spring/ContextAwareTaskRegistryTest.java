@@ -4,9 +4,11 @@
  */
 package com.jramoyo.flowee.spring;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import javax.annotation.Resource;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,9 +33,9 @@ public class ContextAwareTaskRegistryTest {
 
 	@Test
 	public void testGetAction() {
-		Assert.assertNotNull("Task is null", registry.getTask("testTask"));
-		Assert.assertNull("Task is not null", registry.getTask("unknownAction"));
-		Assert.assertNull("Task is not null", registry.getTask("contextAwareTaskRegistry"));
+		assertNotNull("Task is null", registry.getTask("testTask"));
+		assertNull("Task is not null", registry.getTask("unknownAction"));
+		assertNull("Task is not null", registry.getTask("contextAwareTaskRegistry"));
 	}
 
 	public static class TestTask extends AbstractTask<String, WorkflowContext> {

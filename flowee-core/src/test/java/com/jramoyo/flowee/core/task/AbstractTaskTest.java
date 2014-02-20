@@ -4,7 +4,9 @@
  */
 package com.jramoyo.flowee.core.task;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -26,8 +28,8 @@ public class AbstractTaskTest {
 	@Test
 	public void testExecute() throws WorkflowException {
 		WorkflowContext context = new WorkflowContext();
-		Assert.assertEquals("Incorrect Status", TaskStatus.CONTINUE, testTask.execute("supported", context));
-		Assert.assertEquals("Incorrect Status", TaskStatus.SKIP, testTask.execute("not supported", context));
+		assertEquals("Incorrect Status", TaskStatus.CONTINUE, testTask.execute("supported", context));
+		assertEquals("Incorrect Status", TaskStatus.SKIP, testTask.execute("not supported", context));
 	}
 
 	@Test
@@ -36,14 +38,14 @@ public class AbstractTaskTest {
 		try {
 			exceptionTask.setMaxAttempts(5);
 			exceptionTask.execute("value", context);
-			Assert.fail("Exception must be thrown!");
+			fail("Exception must be thrown!");
 		} catch (WorkflowException ex) {
-			Assert.assertEquals(5, exceptionTask.attempts);
+			assertEquals(5, exceptionTask.attempts);
 		}
 
 		exceptionTask.setMaxAttempts(1);
 		exceptionTask.setIsSkipOnException(true);
-		Assert.assertEquals("Incorrect Status", TaskStatus.SKIP, exceptionTask.execute("value", context));
+		assertEquals("Incorrect Status", TaskStatus.SKIP, exceptionTask.execute("value", context));
 	}
 
 	private static class TestTask extends AbstractTask<String, WorkflowContext> {

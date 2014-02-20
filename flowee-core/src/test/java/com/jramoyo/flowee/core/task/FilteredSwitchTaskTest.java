@@ -4,16 +4,17 @@
  */
 package com.jramoyo.flowee.core.task;
 
+import static org.mockito.MockitoAnnotations.initMocks;
+
 import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.BlockJUnit4ClassRunner;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import com.google.common.collect.Maps;
 import com.jramoyo.flowee.common.filter.Filter;
@@ -25,7 +26,7 @@ import com.jramoyo.flowee.core.WorkflowException;
  * 
  * @author jramoyo
  */
-@RunWith(BlockJUnit4ClassRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class FilteredSwitchTaskTest {
 
 	@Mock
@@ -42,7 +43,7 @@ public class FilteredSwitchTaskTest {
 
 	@Before
 	public void before() {
-		MockitoAnnotations.initMocks(this);
+		initMocks(this);
 	}
 
 	@Test
