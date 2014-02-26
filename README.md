@@ -1,4 +1,6 @@
 # Flowee
+[![Build Status](https://travis-ci.org/jramoyo/flowee.png?branch=master)](https://travis-ci.org/jramoyo/flowee)
+
 Flowee is a framework for building Java services backed by one or more workflows. Its primary purpose is to provide groundwork for rule-driven workflow selection and execution. Developers can focus the majority of their efforts on building the tasks which hold the actual business requirements.
 
 Workflows built on Flowee will run without the need for "containers" or "engines". The framework is lightweight and integrates seamlessly with any application.
