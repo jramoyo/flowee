@@ -1,6 +1,7 @@
 # Flowee
-[![Build Status](https://travis-ci.org/jramoyo/flowee.png?branch=master)](https://travis-ci.org/jramoyo/flowee)
-[![Gittip](http://img.shields.io/gittip/jramoyo.svg)](https://www.gittip.com/jramoyo/)
+[![Build Status](http://img.shields.io/travis/jramoyo/flowee.svg?style=flat)](https://travis-ci.org/jramoyo/flowee)
+[![Issues](http://img.shields.io/github/issues/jramoyo/flowee.svg?style=flat)](https://github.com/jramoyo/flowee/issues?state=open)
+[![Gittip](http://img.shields.io/gittip/jramoyo.svg?style=flat)](https://www.gittip.com/jramoyo/)
 
 Flowee is a framework for building Java services backed by one or more workflows. Its primary purpose is to provide groundwork for rule-driven workflow selection and execution. Developers can focus the majority of their efforts on building the tasks which hold the actual business requirements.
 
